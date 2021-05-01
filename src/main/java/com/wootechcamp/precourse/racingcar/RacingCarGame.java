@@ -2,9 +2,12 @@ package com.wootechcamp.precourse.racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCarGame {
+
+    private static final int GO_BASE_NUMBER = 4;
 
     private Scanner scanner;
     private List<Car> carList;
@@ -19,7 +22,36 @@ public class RacingCarGame {
         String[] carNames = getCarName();
         int moveNum = getNumberOfMovements();
         setCarList(carNames);
+        startRace(moveNum);
 
+    }
+
+    private void startRace(int moveNum){
+        for(int i = 0; i < moveNum; i++){
+            System.out.println("moveNum :"+i);
+            goOneStep();
+        }
+    }
+
+    private void goOneStep(){
+        for(int i = 0; i < carList.size(); i++){
+            int randomNum = getRandomNumber();
+            System.out.println("random :"+randomNum);
+
+            if(randomNum >= GO_BASE_NUMBER){
+                Car car = carList.get(i);
+                car.go();
+            }
+        }
+
+        carList.stream().forEach(car -> {
+            System.out.println("name :"+car.getName() + " /position :"+car.getPosition());
+        });
+    }
+
+    private int getRandomNumber(){
+        Random random = new Random();
+        return random.nextInt(10);
     }
 
     private void setCarList(String[] carNames) {
