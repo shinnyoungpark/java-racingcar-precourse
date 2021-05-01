@@ -45,8 +45,17 @@ public class RacingCarGame {
         }
 
         carList.stream().forEach(car -> {
-            System.out.println("name :"+car.getName() + " /position :"+car.getPosition());
+            System.out.println(car.getName() + ":"+getStringBar(car.getPosition()));
         });
+    }
+
+    private String getStringBar(int position){
+        String result = "";
+        for(int i = 0; i < position; i++){
+            result = result + "-";
+        }
+
+        return result;
     }
 
     private int getRandomNumber(){
