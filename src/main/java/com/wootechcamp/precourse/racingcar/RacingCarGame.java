@@ -11,11 +11,36 @@ public class RacingCarGame {
     }
     public void start(){
         System.out.println("Game start!");
-        String[] carNames = getCarName();
 
-        for(int i = 0; i < carNames.length; i++){
-            System.out.println(carNames[i]);
+        String[] carNames = getCarName();
+        int moveNum = getNumberOfMovements();
+
+    }
+
+    private int getNumberOfMovements() {
+        int moveNum = -1;
+
+        while (true){
+            System.out.println("0부터 9사이의 값을 입력하세요.");
+
+            if(!scanner.hasNextInt()){
+                scanner.next();
+                System.out.println("숫자가 아닙니다.");
+                continue;
+            }
+
+            moveNum = scanner.nextInt();
+            if(isOneDigit(moveNum)){
+                return moveNum;
+            }
         }
+    }
+
+    private boolean isOneDigit(int moveNum) {
+        if(moveNum >= 0 && moveNum < 10){
+            return true;
+        }
+        return false;
     }
 
     private String[] getCarName(){
