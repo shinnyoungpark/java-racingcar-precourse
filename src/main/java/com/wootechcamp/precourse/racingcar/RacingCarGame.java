@@ -1,20 +1,34 @@
 package com.wootechcamp.precourse.racingcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarGame {
 
     private Scanner scanner;
+    private List<Car> carList;
 
     RacingCarGame(){
         scanner = new Scanner(System.in);
+        carList = new ArrayList<>();
     }
     public void start(){
         System.out.println("Game start!");
 
         String[] carNames = getCarName();
         int moveNum = getNumberOfMovements();
+        setCarList(carNames);
 
+    }
+
+    private void setCarList(String[] carNames) {
+        for(int i = 0; i < carNames.length; i++){
+            Car car = new Car();
+            car.setPosition(0);
+            car.setName(carNames[i]);
+            carList.add(car);
+        }
     }
 
     private int getNumberOfMovements() {
