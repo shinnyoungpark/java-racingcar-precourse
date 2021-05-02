@@ -1,6 +1,6 @@
 package com.wootechcamp.precourse.racingcar;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     private String name;
     private int position;
@@ -27,6 +27,16 @@ public class Car {
 
     public void go(){
         position = position + 1;
+    }
+
+    @Override
+    public int compareTo(Car c) {
+        if(this.position < c.getPosition()){
+            return 1;
+        } else if (this.position > c.getPosition()) {
+            return -1;
+        }
+        return 0;
     }
 
 }

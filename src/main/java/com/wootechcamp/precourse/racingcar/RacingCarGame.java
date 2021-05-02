@@ -1,9 +1,6 @@
 package com.wootechcamp.precourse.racingcar;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class RacingCarGame {
 
@@ -20,11 +17,49 @@ public class RacingCarGame {
         System.out.println("Game start!");
 
         String[] carNames = getCarName();
+
         int moveNum = getNumberOfMovements();
+
         setCarList(carNames);
+
         startRace(moveNum);
 
+        getWinner();
+
+
+        System.out.println("total score :");
+        for(Car c : carList){
+            System.out.println(c.getName() + " : " + c.getPosition());
+        }
     }
+
+    private void getWinner() {
+        Collections.sort(carList);
+
+        int highestScore = carList.get(0).getPosition();
+
+        List<String> winners = new ArrayList<>();
+        for(Car c : carList){
+            if(c.getPosition() == highestScore){
+                winners.add(c.getName());
+            }
+        }
+
+        printWinner(winners);
+    }
+
+    private void printWinner(List<String> winners) {
+        System.out.print(winners.get(0));
+
+        if(winners.size() > 1){
+            for(int i = 1; i < winners.size(); i++){
+                System.out.print(", " + winners.get(i));
+            }
+        }
+
+        System.out.println("가 최종 우승했습니다.");
+    }
+
 
     private void startRace(int moveNum){
         for(int i = 0; i < moveNum; i++){
