@@ -150,8 +150,24 @@ public class RacingCarGame {
                 continue;
             }
 
+            if(!isNotEmptyString(carNames)){
+                System.out.println("비어있는 자동차 이름이 있습니다.");
+                continue;
+            }
+            //중복되는 이름 제거
+            carNames = new HashSet<>(Arrays.asList(carNames)).toArray(new String[0]);
+
             return carNames;
         }
+    }
+
+    private boolean isNotEmptyString(String[] carNames) {
+        for(int i = 0; i < carNames.length; i++){
+            if(carNames[i].length() <= 0){
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean isUnderFiveSpellings(String[] inputStrArray) {
