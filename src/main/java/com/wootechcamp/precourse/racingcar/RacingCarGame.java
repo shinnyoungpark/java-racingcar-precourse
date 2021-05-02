@@ -145,6 +145,7 @@ public class RacingCarGame {
             }
 
             carNames = input.split(",");
+
             if(!isUnderFiveSpellings(carNames)){
                 System.out.println("자동차 이름은 5자 이하로 입력해 주세요.");
                 continue;
