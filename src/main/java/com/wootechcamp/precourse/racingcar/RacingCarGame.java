@@ -5,8 +5,9 @@ import java.util.*;
 public class RacingCarGame {
 
     private static final int GO_BASE_NUMBER = 4;
-    private Scanner scanner;
+
     private Cars cars;
+    private Scanner scanner;
 
     RacingCarGame(){
         scanner = new Scanner(System.in);
@@ -96,24 +97,28 @@ public class RacingCarGame {
                 continue;
             }
 
-            if(!isNotEmptyString(carNames)){
-                System.out.println("비어있는 자동차 이름이 있습니다.");
-                continue;
-            }
-            //중복되는 이름 제거
-            carNames = new HashSet<>(Arrays.asList(carNames)).toArray(new String[0]);
+            carNames = removeEmptyString(carNames);
+
+            carNames = removeDuplicateName(carNames);
 
             return carNames;
         }
     }
 
-    private boolean isNotEmptyString(String[] carNames) {
+    private String[] removeEmptyString(String[] carNames) {
+        List<String> result = new ArrayList<>();
+
         for(int i = 0; i < carNames.length; i++){
-            if(carNames[i].length() <= 0){
-                return false;
+            if(carNames[i] != null && carNames[i].length() > 0){
+                result.add(carNames[i]);
             }
         }
-        return true;
+
+        return result.toArray(new String[result.size()]);
+    }
+
+    private String[] removeDuplicateName(String[] carNames){
+        return new HashSet<>(Arrays.asList(carNames)).toArray(new String[0]);
     }
 
     private boolean isUnderFiveSpellings(String[] inputStrArray) {
