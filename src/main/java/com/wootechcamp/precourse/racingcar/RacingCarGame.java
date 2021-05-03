@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RacingCarGame {
 
-
+    private static final int GO_BASE_NUMBER = 4;
     private Scanner scanner;
     private Cars cars;
 
@@ -12,6 +12,7 @@ public class RacingCarGame {
         scanner = new Scanner(System.in);
         cars = new Cars();
     }
+
     public void start(){
         System.out.println("Game start!");
 
@@ -23,20 +24,33 @@ public class RacingCarGame {
 
         startRace(moveNum);
 
-        cars.getWinner();
+        List<String> winners = cars.getWinners();
 
-        System.out.println("total score :");
-        cars.printCars();
+        printWinner(winners);
+
+        //System.out.println("total score :");
+        //cars.printCars();
     }
 
+    private void printWinner(List<String> winners) {
+        System.out.print(winners.get(0));
+
+        if(winners.size() > 1){
+            for(int i = 1; i < winners.size(); i++){
+                System.out.print(", " + winners.get(i));
+            }
+        }
+
+        System.out.println("가 최종 우승했습니다.");
+    }
 
     private void startRace(int moveNum){
+        System.out.println("\n실행 결과");
         for(int i = 0; i < moveNum; i++){
-            System.out.println("moveNum :"+i);
-            cars.goOneStep();
+            cars.moveOnce(GO_BASE_NUMBER);
+            System.out.println();
         }
     }
-
 
     private int getNumberOfMovements() {
         int moveNum = -1;

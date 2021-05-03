@@ -7,15 +7,13 @@ import java.util.Random;
 
 public class Cars {
 
-    private static final int GO_BASE_NUMBER = 4;
-
     private List<Car> carList;
 
     Cars(){
         carList = new ArrayList<>();
     }
 
-    public void getWinner() {
+    public List<String> getWinners() {
         Collections.sort(carList);
 
         int highestScore = carList.get(0).getPosition();
@@ -26,24 +24,20 @@ public class Cars {
                 winners.add(c.getName());
             }
         }
-
-        printWinner(winners);
+        return winners;
     }
 
-    public void goOneStep(){
-        for(int i = 0; i < carList.size(); i++){
+    public void moveOnce(int goBaseNumber){
+        for(Car car : carList){
             int randomNum = getRandomNumber();
-            System.out.println("random :"+randomNum);
+            //System.out.println("random :"+randomNum);
 
-            if(randomNum >= GO_BASE_NUMBER){
-                Car car = carList.get(i);
-                car.go();
+            if(randomNum >= goBaseNumber){
+                car.move();
             }
         }
 
-        carList.stream().forEach(car -> {
-            System.out.println(car.getName() + ":"+getStringBar(car.getPosition()));
-        });
+        printCars();
     }
 
     private String getStringBar(int position){
@@ -60,22 +54,9 @@ public class Cars {
         return random.nextInt(10);
     }
 
-    private void printWinner(List<String> winners) {
-        System.out.print(winners.get(0));
-
-        if(winners.size() > 1){
-            for(int i = 1; i < winners.size(); i++){
-                System.out.print(", " + winners.get(i));
-            }
-        }
-
-        System.out.println("가 최종 우승했습니다.");
-    }
-
-
     public void printCars(){
-        for(Car c : carList){
-            System.out.println(c.getName() + " : " + c.getPosition());
+        for(Car car : carList){
+            System.out.println(car.getName() + " : " + getStringBar(car.getPosition()));
         }
     }
 

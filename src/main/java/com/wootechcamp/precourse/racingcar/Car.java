@@ -25,7 +25,7 @@ public class Car implements Comparable<Car> {
         this.position = position;
     }
 
-    public void go(){
+    public void move(){
         position = position + 1;
     }
 
