@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Cars {
+
     private static final String MOVEMENT_MARK = "-";
 
     private List<Car> carList;
