@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Cars {
+    private static final String MOVEMENT_MARK = "-";
 
     private List<Car> carList;
 
@@ -27,12 +28,12 @@ public class Cars {
         return winners;
     }
 
-    public void moveOnce(int goBaseNumber){
+    public void moveOnce(int moveBaseNumber){
         for(Car car : carList){
             int randomNum = getRandomNumber();
             //System.out.println("random :"+randomNum);
 
-            if(randomNum >= goBaseNumber){
+            if(randomNum >= moveBaseNumber){
                 car.move();
             }
         }
@@ -43,7 +44,7 @@ public class Cars {
     private String getStringBar(int position){
         String result = "";
         for(int i = 0; i < position; i++){
-            result = result + "-";
+            result = result + MOVEMENT_MARK;
         }
 
         return result;

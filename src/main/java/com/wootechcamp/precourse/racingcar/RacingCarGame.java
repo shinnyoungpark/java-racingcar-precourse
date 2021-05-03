@@ -4,7 +4,8 @@ import java.util.*;
 
 public class RacingCarGame {
 
-    private static final int GO_BASE_NUMBER = 4;
+    private static final int MOVE_BASE_NUMBER = 4;
+    private static final int CAR_NAME_MAX_LENGTH = 5;
 
     private Cars cars;
     private Scanner scanner;
@@ -48,7 +49,7 @@ public class RacingCarGame {
     private void startRace(int moveNum){
         System.out.println("\n실행 결과");
         for(int i = 0; i < moveNum; i++){
-            cars.moveOnce(GO_BASE_NUMBER);
+            cars.moveOnce(MOVE_BASE_NUMBER);
             System.out.println();
         }
     }
@@ -123,7 +124,7 @@ public class RacingCarGame {
 
     private boolean isUnderFiveSpellings(String[] inputStrArray) {
         for(int i = 0; i < inputStrArray.length; i++){
-            if(inputStrArray[i].length() > 5){
+            if(inputStrArray[i].length() > CAR_NAME_MAX_LENGTH){
                 return false;
             }
         }
