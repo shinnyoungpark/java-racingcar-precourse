@@ -4,14 +4,13 @@ import java.util.*;
 
 public class RacingCarGame {
 
-    private static final int GO_BASE_NUMBER = 4;
 
     private Scanner scanner;
-    private List<Car> carList;
+    private Cars cars;
 
     RacingCarGame(){
         scanner = new Scanner(System.in);
-        carList = new ArrayList<>();
+        cars = new Cars();
     }
     public void start(){
         System.out.println("Game start!");
@@ -20,92 +19,24 @@ public class RacingCarGame {
 
         int moveNum = getNumberOfMovements();
 
-        setCarList(carNames);
+        cars.setCarList(carNames);
 
         startRace(moveNum);
 
-        getWinner();
-
+        cars.getWinner();
 
         System.out.println("total score :");
-        for(Car c : carList){
-            System.out.println(c.getName() + " : " + c.getPosition());
-        }
-    }
-
-    private void getWinner() {
-        Collections.sort(carList);
-
-        int highestScore = carList.get(0).getPosition();
-
-        List<String> winners = new ArrayList<>();
-        for(Car c : carList){
-            if(c.getPosition() == highestScore){
-                winners.add(c.getName());
-            }
-        }
-
-        printWinner(winners);
-    }
-
-    private void printWinner(List<String> winners) {
-        System.out.print(winners.get(0));
-
-        if(winners.size() > 1){
-            for(int i = 1; i < winners.size(); i++){
-                System.out.print(", " + winners.get(i));
-            }
-        }
-
-        System.out.println("가 최종 우승했습니다.");
+        cars.printCars();
     }
 
 
     private void startRace(int moveNum){
         for(int i = 0; i < moveNum; i++){
             System.out.println("moveNum :"+i);
-            goOneStep();
+            cars.goOneStep();
         }
     }
 
-    private void goOneStep(){
-        for(int i = 0; i < carList.size(); i++){
-            int randomNum = getRandomNumber();
-            System.out.println("random :"+randomNum);
-
-            if(randomNum >= GO_BASE_NUMBER){
-                Car car = carList.get(i);
-                car.go();
-            }
-        }
-
-        carList.stream().forEach(car -> {
-            System.out.println(car.getName() + ":"+getStringBar(car.getPosition()));
-        });
-    }
-
-    private String getStringBar(int position){
-        String result = "";
-        for(int i = 0; i < position; i++){
-            result = result + "-";
-        }
-
-        return result;
-    }
-
-    private int getRandomNumber(){
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
-    private void setCarList(String[] carNames) {
-        for(int i = 0; i < carNames.length; i++){
-            Car car = new Car();
-            car.setPosition(0);
-            car.setName(carNames[i]);
-            carList.add(car);
-        }
-    }
 
     private int getNumberOfMovements() {
         int moveNum = -1;
