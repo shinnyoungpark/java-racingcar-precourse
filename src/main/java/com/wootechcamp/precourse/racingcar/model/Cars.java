@@ -5,7 +5,6 @@ import com.wootechcamp.precourse.racingcar.util.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 public class Cars {
 
@@ -65,9 +64,5 @@ public class Cars {
             car.setName(carNames[i]);
             carList.add(car);
         }
-    }
-
-    public List<Car> getCarList() {
-        return carList;
     }
 }
