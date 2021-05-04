@@ -1,4 +1,4 @@
-package com.wootechcamp.precourse.racingcar.model;
+package com.wootechcamp.precourse.racingcar;
 
 import com.wootechcamp.precourse.racingcar.util.RandomNumberGenerator;
 
@@ -12,10 +12,10 @@ public class Cars {
 
     private List<Car> carList;
 
-    public Cars(String[] carNames){
+    public Cars(CarNames carNames){
         carList = new ArrayList<>();
-        for(int i = 0; i < carNames.length; i++){
-            Car car = new Car(carNames[i]);
+        for(int i = 0; i < carNames.getCarNames().length; i++){
+            Car car = new Car(carNames.getCarNames()[i]);
             carList.add(car);
         }
     }

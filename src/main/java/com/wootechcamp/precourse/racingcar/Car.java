@@ -1,4 +1,4 @@
-package com.wootechcamp.precourse.racingcar.model;
+package com.wootechcamp.precourse.racingcar;
 
 public class Car implements Comparable<Car> {
 
