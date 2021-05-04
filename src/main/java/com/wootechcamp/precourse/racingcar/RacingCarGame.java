@@ -1,7 +1,5 @@
 package com.wootechcamp.precourse.racingcar;
 
-import com.wootechcamp.precourse.racingcar.util.StringArrayChecker;
-
 import java.util.*;
 
 public class RacingCarGame {
@@ -28,11 +26,11 @@ public class RacingCarGame {
 
         List<String> winners = cars.getWinners();
 
-        printWinner(winners);
+        printWinners(winners);
 
     }
 
-    private void printWinner(List<String> winners) {
+    private void printWinners(List<String> winners) {
         System.out.print(winners.get(0));
 
         if (winners.size() > 1) {
@@ -82,12 +80,12 @@ public class RacingCarGame {
         CarNames carNames;
         System.out.println("차이름을 입력해주세요.");
         while (true) {
-
             try {
                 String input = scanner.next();
                 carNames = new CarNames(input);
 
                 return carNames;
+
             } catch (IllegalArgumentException illegalArgumentException) {
                 System.out.println(illegalArgumentException.getMessage());
             }

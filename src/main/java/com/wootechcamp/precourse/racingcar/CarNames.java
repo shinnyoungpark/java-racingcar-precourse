@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class CarNames {
+
     private static final int CAR_NAME_MAX_LENGTH = 5;
     private static final String DELIMITER = ",";
 
