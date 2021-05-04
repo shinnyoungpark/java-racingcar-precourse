@@ -1,4 +1,4 @@
-package com.wootechcamp.precourse.racingcar.util;
+package com.wootechcamp.precourse.racingcar;
 
 import java.util.Random;
 

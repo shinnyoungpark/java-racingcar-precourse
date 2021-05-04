@@ -1,6 +1,5 @@
 package com.wootechcamp.precourse.racingcar;
 
-import com.wootechcamp.precourse.racingcar.util.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RandomNumberGeneratorTest {
 
     @Test
-    @DisplayName("")
+    @DisplayName("랜덤 번호 생성 테스트")
     public void getRandomNumberTest(){
         //given
         //when
