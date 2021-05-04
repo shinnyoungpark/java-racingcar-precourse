@@ -12,8 +12,12 @@ public class Cars {
 
     private List<Car> carList;
 
-    public Cars(){
+    public Cars(String[] carNames){
         carList = new ArrayList<>();
+        for(int i = 0; i < carNames.length; i++){
+            Car car = new Car(carNames[i]);
+            carList.add(car);
+        }
     }
 
     public List<String> getWinners() {
@@ -54,15 +58,6 @@ public class Cars {
     public void printCars(){
         for(Car car : carList){
             System.out.println(car.getName() + " : " + getStringBar(car.getPosition()));
-        }
-    }
-
-    public void setCarList(String[] carNames) {
-        for(int i = 0; i < carNames.length; i++){
-            Car car = new Car();
-            car.setPosition(0);
-            car.setName(carNames[i]);
-            carList.add(car);
         }
     }
 }

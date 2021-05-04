@@ -16,7 +16,6 @@ public class RacingCarGame {
 
     RacingCarGame(){
         scanner = new Scanner(System.in);
-        cars = new Cars();
     }
 
     public void start(){
@@ -26,7 +25,7 @@ public class RacingCarGame {
 
         int moveNum = getNumberOfMovements();
 
-        cars.setCarList(carNames);
+        cars = new Cars(carNames);
 
         startRace(moveNum);
 
