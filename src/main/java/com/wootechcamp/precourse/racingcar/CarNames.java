@@ -15,7 +15,6 @@ public class CarNames {
     public CarNames(String input) {
 
         if (!input.contains(DELIMITER)) {
-            System.out.println("자동차 구분자는 " + DELIMITER + " 로 해주세요.");
             throw new IllegalArgumentException("자동차 구분자는 " + DELIMITER + " 로 해주세요.");
         }
 
