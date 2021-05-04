@@ -1,4 +1,6 @@
-package com.wootechcamp.precourse.racingcar;
+package com.wootechcamp.precourse.racingcar.model;
+
+import com.wootechcamp.precourse.racingcar.util.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +13,7 @@ public class Cars {
 
     private List<Car> carList;
 
-    Cars(){
+    public Cars(){
         carList = new ArrayList<>();
     }
 
@@ -31,8 +33,7 @@ public class Cars {
 
     public void moveOnce(int moveBaseNumber){
         for(Car car : carList){
-            int randomNum = getRandomNumber();
-            //System.out.println("random :"+randomNum);
+            int randomNum = RandomNumberGenerator.getRandomNumber();
 
             if(randomNum >= moveBaseNumber){
                 car.move();
@@ -51,11 +52,6 @@ public class Cars {
         return result;
     }
 
-    private int getRandomNumber(){
-        Random random = new Random();
-        return random.nextInt(10);
-    }
-
     public void printCars(){
         for(Car car : carList){
             System.out.println(car.getName() + " : " + getStringBar(car.getPosition()));
@@ -69,5 +65,9 @@ public class Cars {
             car.setName(carNames[i]);
             carList.add(car);
         }
+    }
+
+    public List<Car> getCarList() {
+        return carList;
     }
 }

@@ -1,11 +1,15 @@
 package com.wootechcamp.precourse.racingcar;
 
+import com.wootechcamp.precourse.racingcar.model.Cars;
+import com.wootechcamp.precourse.racingcar.util.StringArrayChecker;
+
 import java.util.*;
 
 public class RacingCarGame {
 
     private static final int MOVE_BASE_NUMBER = 4;
     private static final int CAR_NAME_MAX_LENGTH = 5;
+    private static final String DELIMITER = ",";
 
     private Cars cars;
     private Scanner scanner;
@@ -30,8 +34,6 @@ public class RacingCarGame {
 
         printWinner(winners);
 
-        //System.out.println("total score :");
-        //cars.printCars();
     }
 
     private void printWinner(List<String> winners) {
@@ -86,49 +88,24 @@ public class RacingCarGame {
         while(true){
             String input = scanner.next();
 
-            if(!input.contains(",")){
-                System.out.println("자동차 구분자는 ,(쉼표)로 해주세요.");
+            if(!input.contains(DELIMITER)){
+                System.out.println("자동차 구분자는 " + DELIMITER + " 로 해주세요.");
                 continue;
             }
 
             carNames = input.split(",");
 
-            if(!isUnderFiveSpellings(carNames)){
+            if(!StringArrayChecker.isUnderMaxSpellings(carNames, CAR_NAME_MAX_LENGTH)){
                 System.out.println("자동차 이름은 5자 이하로 입력해 주세요.");
                 continue;
             }
 
-            carNames = removeEmptyString(carNames);
+            carNames = StringArrayChecker.removeEmptyString(carNames);
 
-            carNames = removeDuplicateName(carNames);
+            carNames = StringArrayChecker.removeDuplicateName(carNames);
 
             return carNames;
         }
-    }
-
-    private String[] removeEmptyString(String[] carNames) {
-        List<String> result = new ArrayList<>();
-
-        for(int i = 0; i < carNames.length; i++){
-            if(carNames[i] != null && carNames[i].length() > 0){
-                result.add(carNames[i]);
-            }
-        }
-
-        return result.toArray(new String[result.size()]);
-    }
-
-    private String[] removeDuplicateName(String[] carNames){
-        return new HashSet<>(Arrays.asList(carNames)).toArray(new String[0]);
-    }
-
-    private boolean isUnderFiveSpellings(String[] inputStrArray) {
-        for(int i = 0; i < inputStrArray.length; i++){
-            if(inputStrArray[i].length() > CAR_NAME_MAX_LENGTH){
-                return false;
-            }
-        }
-        return true;
     }
 
 }

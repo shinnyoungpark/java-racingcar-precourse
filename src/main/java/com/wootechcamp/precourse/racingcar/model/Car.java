@@ -1,11 +1,11 @@
-package com.wootechcamp.precourse.racingcar;
+package com.wootechcamp.precourse.racingcar.model;
 
 public class Car implements Comparable<Car> {
 
     private String name;
     private int position;
 
-    Car(){
+    public Car(){
         position = 0;
     }
 
